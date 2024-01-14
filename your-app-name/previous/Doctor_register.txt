@@ -1,0 +1,924 @@
+// import React, { useState } from 'react';
+// import '../styles/register.css'
+// function Doctor_register() {
+
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [date, setDate] = useState('');
+//   const [time, setTime] = useState('');
+//   const [selectedDoctor, setSelectedDoctor] = useState('');
+
+//   const [successMessage, setSuccessMessage] = useState('');
+
+//   const doctors = [
+//     { id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { id: 3, name: 'Dr. Bob Johnson', specialty: 'Neurologist' },
+
+//   ];
+
+//   const handleAppointmentSubmit = (e) => {
+//     e.preventDefault();
+
+//     const appointmentDetails = {
+//       name,
+//       email,
+//       date,
+//       time,
+//       selectedDoctor,
+//     };
+
+//     localStorage.setItem('appointment', JSON.stringify(appointmentDetails));
+
+//     setSuccessMessage('Appointment submitted successfully!');
+
+//     setName('');
+//     setEmail('');
+//     setDate('');
+//     setTime('');
+//     setSelectedDoctor('');
+//   };
+
+//   return (
+//     <div className="app">
+//       <form  className="register-form" onSubmit={handleAppointmentSubmit}>
+//       <div className='doctor_register'><h2><b>Book an Appointment</b></h2></div> 
+       
+//           <label>Name:</label>
+//           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+        
+//           <label>Email:</label>
+//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+       
+//           <label>Date:</label>
+//           <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+        
+//           <label>Time:</label>
+//           <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+        
+//           <label>Select Doctor:</label>
+//           <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
+//             <option value="">Choose a doctor</option>
+//             {doctors.map((doctor) => (
+//               <option key={doctor.id} value={doctor.name}>
+//                 {doctor.name} - {doctor.specialty}
+//               </option>
+//             ))}
+//           </select>
+//           <button  className="btn"  type="submit">Submit Appointment</button>
+//           {successMessage && <div className="success-message">{successMessage}</div>}
+
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Doctor_register;
+import React, { useState } from 'react';
+import '../styles/register.css';
+
+function Doctor_register() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [selectedDoctor, setSelectedDoctor] = useState('');
+  const [selectedDoctorSpecialty, setSelectedDoctorSpecialty] = useState('');
+
+  const [successMessage, setSuccessMessage] = useState('');
+
+  const doctors = [
+    { id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+    { id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+    { id: 3, name: 'Dr. Bob Johnson', specialty: 'Neurologist' },
+  ];
+
+  const handleAppointmentSubmit = (e) => {
+    e.preventDefault();
+
+    const selectedDoctorData = doctors.find((doctor) => doctor.name === selectedDoctor);
+
+    const appointmentDetails = {
+      name,
+      email,
+      date,
+      time,
+      selectedDoctor,
+      specialty: selectedDoctorData ? selectedDoctorData.specialty : '',
+    };
+
+    localStorage.setItem('appointment', JSON.stringify(appointmentDetails));
+
+    setSuccessMessage('Appointment submitted successfully!');
+
+    setName('');
+    setEmail('');
+    setDate('');
+    setTime('');
+    setSelectedDoctor('');
+    setSelectedDoctorSpecialty('');
+  };
+
+  return (
+    <div className="app">
+      <form className="register-form" onSubmit={handleAppointmentSubmit}>
+        <div className='doctor_register'><h2><b>Book an Appointment</b></h2></div>
+
+        <label>Name:</label>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+
+        <label>Email:</label>
+        <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+
+        <label>Date:</label>
+        <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+
+        <label>Time:</label>
+        <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+
+        <label>Select Doctor:</label>
+        <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
+          <option value="">Choose a doctor</option>
+          {doctors.map((doctor) => (
+            <option key={doctor.id} value={doctor.name}>
+              {doctor.name} - {doctor.specialty}
+            </option>
+          ))}
+        </select>
+
+        <label>Doctor's Specialty:</label>
+        <input type="text" value={selectedDoctorSpecialty} readOnly />
+
+        <button className="btn" type="submit">Submit Appointment</button>
+        {successMessage && <div className="success-message">{successMessage}</div>}
+      </form>
+    </div>
+  );
+}
+
+export default Doctor_register;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import '../styles/register.css'
+// function Doctor_register() {
+
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [date, setDate] = useState('');
+//   const [time, setTime] = useState('');
+//   const [selectedDoctor, setSelectedDoctor] = useState('');
+//   const [successMessage, setSuccessMessage] = useState('');
+
+
+//   const doctors = [
+//     { id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { id: 3, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//     { id: 4, name: 'Dr. Anne', specialty: 'ENT' },
+//     { id: 5, name: 'Dr. Marko', specialty: 'Nephrology' },
+//     { id: 6, name: 'Dr. Gandhi', specialty: 'Neurology' },
+
+//   ];
+
+//   const handleAppointmentSubmit = (e) => {
+//     e.preventDefault();
+
+//     const appointmentDetails = {
+//       name,
+//       email,
+//       date,
+//       time,
+//       selectedDoctor,
+//     };
+
+//     const existingAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+//     const updatedAppointments = [...existingAppointments, appointmentDetails];
+//     localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+
+//     setSuccessMessage('Appointment submitted successfully!');
+
+//     setName('');
+//     setEmail('');
+//     setDate('');
+//     setTime('');
+//     setSelectedDoctor('');
+//   };
+
+//   return (
+//     <div className='app'>
+      
+//       <form  className='register-form' onSubmit={handleAppointmentSubmit}>
+//       <h2><b>Book an Appointment</b></h2>
+//         <div>
+//           <label>Name:</label>
+//           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Email:</label>
+//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Date:</label>
+//           <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Time:</label>
+//           <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Select Doctor:</label>
+//           <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
+//             <option value="">Choose a doctor</option>
+//             {doctors.map((doctor) => (
+//               <option key={doctor.id} value={doctor.name}>
+//                 {doctor.name} - {doctor.specialty}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//         <div>
+//           <button className='btn' type="submit">Submit Appointment</button>
+//           {successMessage && <div className="success-message">{successMessage}</div>}  
+//         </div>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Doctor_register;
+
+
+// import React, { useState } from 'react';
+// import '../styles/register.css';
+
+// function Doctor_register() {
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [age, setAge] = useState('');
+//   const [gender, setGender] = useState('');
+//   const [disease, setDisease] = useState('');
+//   const [bloodGroup, setBloodGroup] = useState('');
+//   const [phoneNumber, setPhoneNumber] = useState('');
+//   const [date, setDate] = useState('');
+//   const [time, setTime] = useState('');
+//   const [selectedDoctor, setSelectedDoctor] = useState('');
+//   const [successMessage, setSuccessMessage] = useState('');
+
+//   const doctors = [
+//     { id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { id: 1, name: 'Dr. Varun', specialty: 'Cardiologist' },
+//     { id: 1, name: 'Dr. Ankush Ahuja', specialty: 'Cardiologist' },
+//     { id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { id: 3, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//     { id: 3, name: 'Dr. John ', specialty: 'Dentistry' },
+//     { id: 4, name: 'Dr. Anne', specialty: 'ENT' },
+//     { id: 5, name: 'Dr. Marko', specialty: 'Nephrology' },
+//     { id: 6, name: 'Dr. Gandhi', specialty: 'Neurology' },
+//   ];
+
+//   const handleAppointmentSubmit = (e) => {
+//     e.preventDefault();
+
+//     const appointmentDetails = {
+//       name,
+//       email,
+//       age,
+//       gender,
+//       disease,
+//       bloodGroup,
+//       phoneNumber,
+//       date,
+//       time,
+//       selectedDoctor,
+//     };
+
+//     const existingAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+//     const updatedAppointments = [...existingAppointments, appointmentDetails];
+//     localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+
+//     setSuccessMessage('Appointment submitted successfully!');
+
+//     setName('');
+//     setEmail('');
+//     setAge('');
+//     setGender('');
+//     setDisease('');
+//     setBloodGroup('');
+//     setPhoneNumber('');
+//     setDate('');
+//     setTime('');
+//     setSelectedDoctor('');
+//   };
+
+//   return (
+//     <div className="app">
+//       <form className="register-form" onSubmit={handleAppointmentSubmit}>
+//         <h2>
+//           <b>Book an Appointment</b>
+//         </h2>
+//         <div>
+//           <label>Name:</label>
+//           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Email:</label>
+//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Age:</label>
+//           <input type="number" value={age} onChange={(e) => setAge(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Gender:</label>
+//           <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Disease:</label>
+//           <input type="text" value={disease} onChange={(e) => setDisease(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Blood Group:</label>
+//           <input type="text" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Phone Number:</label>
+//           <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Date:</label>
+//           <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Time:</label>
+//           <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Select Doctor:</label>
+//           <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
+//             <option value="">Choose a doctor</option>
+//             {doctors.map((doctor) => (
+//               <option key={doctor.id} value={doctor.name}>
+//                 {doctor.name} - {doctor.specialty}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//         <div>
+//           <button className="btn" type="submit">
+//             Submit Appointment
+//           </button>
+//           {successMessage && <div className="success-message">{successMessage}</div>}
+//         </div>
+
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Doctor_register;
+
+
+
+
+// import React, { useState } from 'react';
+// import '../styles/register.css';
+
+// function Doctor_register() {
+//   const [name, setName] = useState('');
+//   const [email, setEmail] = useState('');
+//   const [age, setAge] = useState('');
+//   const [gender, setGender] = useState('');
+//   const [disease, setDisease] = useState('');
+//   const [bloodGroup, setBloodGroup] = useState('');
+//   const [phoneNumber, setPhoneNumber] = useState('');
+//   const [date, setDate] = useState('');
+//   const [time, setTime] = useState('');
+//   const [selectedDoctor, setSelectedDoctor] = useState('');
+//   const [successMessage, setSuccessMessage] = useState('');
+//   const [error, setError] = useState('');
+
+//   const doctors = [
+//     { id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { id: 1, name: 'Dr. Varun', specialty: 'Cardiologist' },
+//     { id: 1, name: 'Dr. Ankush Ahuja', specialty: 'Cardiologist' },
+//     { id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { id: 3, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//     { id: 3, name: 'Dr. John ', specialty: 'Dentistry' },
+//     { id: 4, name: 'Dr. Anne', specialty: 'ENT' },
+//     { id: 5, name: 'Dr. Marko', specialty: 'Nephrology' },
+//     { id: 6, name: 'Dr. Gandhi', specialty: 'Neurology' },
+//   ];
+
+//   const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+//   const phoneNumberRegex = /^\d{10}$/;
+
+//   const handleAppointmentSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (
+//       !name ||
+//       !email ||
+//       !age ||
+//       !gender ||
+//       !disease ||
+//       !bloodGroup ||
+//       !phoneNumber ||
+//       !date ||
+//       !time ||
+//       !selectedDoctor
+//     ) {
+//       setError('All fields are required');
+//       return;
+//     }
+
+//     if (!email.match(emailRegex)) {
+//       setError('Invalid email format');
+//       return;
+//     }
+
+//     if (!phoneNumber.match(phoneNumberRegex)) {
+//       setError('Invalid phone number format');
+//       return;
+//     }
+
+
+//     const appointmentDetails = {
+//       name,
+//       email,
+//       age,
+//       gender,
+//       disease,
+//       bloodGroup,
+//       phoneNumber,
+//       date,
+//       time,
+//       selectedDoctor,
+//     };
+
+//     const existingAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+//     const updatedAppointments = [...existingAppointments, appointmentDetails];
+//     localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+
+//     setSuccessMessage('Appointment submitted successfully!');
+//     setError('');
+
+//     setName('');
+//     setEmail('');
+//     setAge('');
+//     setGender('');
+//     setDisease('');
+//     setBloodGroup('');
+//     setPhoneNumber('');
+//     setDate('');
+//     setTime('');
+//     setSelectedDoctor('');
+//   };
+
+//   return (
+//     <div className="app">
+//       <form className="register-form" onSubmit={handleAppointmentSubmit}>
+//         <h2>
+//           <b>Book an Appointment</b>
+//         </h2>
+//         {error && <div className="error-message">{error}</div>}
+//         <div>
+//           <label>Name:</label>
+//           <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Email:</label>
+//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Age:</label>
+//           <input type="number" value={age} onChange={(e) => setAge(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Gender:</label>
+//           <input type="text" value={gender} onChange={(e) => setGender(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Disease:</label>
+//           <input type="text" value={disease} onChange={(e) => setDisease(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Blood Group:</label>
+//           <input type="text" value={bloodGroup} onChange={(e) => setBloodGroup(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Phone Number:</label>
+//           <input type="tel" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Date:</label>
+//           <input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Time:</label>
+//           <input type="time" value={time} onChange={(e) => setTime(e.target.value)} required />
+//         </div>
+//         <div>
+//           <label>Select Doctor:</label>
+//           <select value={selectedDoctor} onChange={(e) => setSelectedDoctor(e.target.value)}>
+//             <option value="">Choose a doctor</option>
+//             {doctors.map((doctor) => (
+//               <option key={doctor.id} value={doctor.name}>
+//                 {doctor.name} - {doctor.specialty}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+//         <div>
+//           <button className="btn" type="submit">
+//             Submit Appointment
+//           </button>
+//         </div>
+//         {successMessage && <div className="success-message">{successMessage}</div>}
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default Doctor_register;
+
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import "../styles/view.css";
+
+// function ViewRecords() {
+//   const [appointments, setAppointments] = useState([]);
+//   const [appointmentsArray, setAppointmentsArray] = useState([]);
+
+//   useEffect(() => {
+//     const storedAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+//     setAppointments(storedAppointments);
+
+//     console.log('Appointments from local storage:', storedAppointments);
+//   }, []);
+
+//   useEffect(() => {
+//     const storedAppointmentsArray = JSON.parse(localStorage.getItem('appointmentsArray')) || [];
+//     setAppointmentsArray(storedAppointmentsArray);
+
+//     console.log('Booked Appointments from local storage:', storedAppointmentsArray);
+//   }, []);
+
+//   return (
+//     <>
+//       <div className='view'>
+//         <h1 className='view-heading'>Registered Appointments</h1>
+//         <table className='appointment-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Email</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//               <th>Age</th>
+//               <th>Phone Number</th>
+//               <th>Blood Group</th>
+//               <th>Gender</th>
+//               <th>Doctor</th>
+//               <th>Specialty</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointments.map((appointment, index) => (
+//               <tr key={index} className='appointment-row'>
+//                 <td>{appointment.name}</td>
+//                 <td>{appointment.email}</td>
+//                 <td>{appointment.date}</td>
+//                 <td>{appointment.time}</td>
+//                 <td>{appointment.age}</td>
+//                 <td>{appointment.phoneNumber}</td>
+//                 <td>{appointment.bloodGroup}</td>
+//                 <td>{appointment.gender}</td>
+//                 <td>{appointment.selectedDoctor}</td>
+//                 <td>{getDoctorSpecialty(appointment.selectedDoctor)}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//       <div className='view1'>
+//         <h1 className='view-heading'>Booked Appointments</h1>
+//         <table className='other-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointmentsArray.map((appointmentArray, index) => (
+//               <tr key={index} className='other-row'>
+//                 <td>{appointmentArray.userName}</td>
+//                 <td>{appointmentArray.selectedDate}</td>
+//                 <td>{appointmentArray.selectedTime}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </>
+//   );
+// }
+
+// function getDoctorSpecialty(doctorName) {
+//   // Replace with your logic to fetch the specialty based on the doctor's name
+//   const doctors = [
+//     { D_Id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { D_Id: 2, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { D_Id: 3, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//     { D_Id: 4, name: 'Dr. Anne ', specialty: 'ENT' },
+//     { D_Id: 5, name: 'Dr. Marko Sob', specialty: 'Nephrology' },
+//     { D_Id: 6, name: 'Dr. Gandhi Ji', specialty: 'Neurology' },
+
+//   ];
+
+//   const doctor = doctors.find((doc) => doc.name === doctorName);
+//   return doctor ? doctor.specialty : '';
+// }
+
+// export default ViewRecords;
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import "../styles/view.css";
+
+// function ViewRecords() {
+//   const [appointments, setAppointments] = useState([]);
+//   const [appointmentsArray, setAppointmentsArray] = useState([]);
+//    const isLoggedInString = localStorage.getItem("isLoggedIn"); // Retrieve the stored string
+//     const isLoggedIn = JSON.parse(isLoggedInString); // Parse the string to an object
+//     const isDoctor = isLoggedIn && isLoggedIn.userType === "doctor";
+//   // const isAdmin = isLoggedIn && isLoggedIn.userType === "admin";
+//   // const isPatient = isLoggedIn && isLoggedIn.userType === "patient";
+//   useEffect(() => {
+//     const storedAppointments = JSON.parse(localStorage.getItem('appointments')) || [{name: "Saurav Sharma", email: "saurav@gmail.com", age: "23", gender: "male", disease: "Headache", 
+//     date:"2002-05-07",selectedDoctor: "Dr. John Smith",time : "12:25", phoneNumber:"7894561231",bloodGroup:"A+"}];
+//     setAppointments(storedAppointments);
+
+//     console.log('Appointments from local storage:', storedAppointments);
+//   }, []);
+
+//   useEffect(() => {
+//     const storedAppointmentsArray = JSON.parse(localStorage.getItem('appointmentsArray')) || [{userName: "Saurav Sharma", selectedDate: "2002-05-07", selectedTime: "12:25"}];
+//     setAppointmentsArray(storedAppointmentsArray);
+
+//     console.log('Booked Appointments from local storage:', storedAppointmentsArray);
+//   }, []);
+
+
+//   const handleCancelAppointment = (index) => {
+//     // Implement your logic to cancel the appointment based on the index
+//     const updatedAppointments = [...appointments];
+//     updatedAppointments.splice(index, 1);
+//     // Save the updated appointments back to localStorage
+//     localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+//     setAppointments(updatedAppointments);
+//   };
+//   return (
+//     <>
+//       <div className='view'>
+//         <h1 className='view-heading'>Registered Appointments</h1>
+//         <table className='appointment-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Email</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//               <th>Age</th>
+//               <th>Phone Number</th>
+//               <th>Blood Group</th>
+//               <th>Gender</th>
+//               <th>Doctor</th>
+//               <th>Specialty</th>
+//               {isDoctor && <th>Action</th>}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointments.map((appointment, index) => (
+//               <tr key={index} className='appointment-row'>
+//                 <td>{appointment.name}</td>
+//                 <td>{appointment.email}</td>
+//                 <td>{appointment.date}</td>
+//                 <td>{appointment.time}</td>
+//                 <td>{appointment.age}</td>
+//                 <td>{appointment.phoneNumber}</td>
+//                 <td>{appointment.bloodGroup}</td>
+//                 <td>{appointment.gender}</td>
+//                 <td>{appointment.selectedDoctor}</td>
+//                 <td>{getDoctorSpecialty(appointment.selectedDoctor)}</td>
+//                 {isDoctor && (
+//                <td>
+//              {isDoctor && (
+//                <button onClick={() => handleCancelAppointment(index)}>Cancel</button>
+//                )}
+//               </td>
+//             )}
+
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//       <div className='view1'>
+//         <h1 className='view-heading'>Booked Appointments</h1>
+//         <table className='other-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointmentsArray.map((appointmentArray, index) => (
+//               <tr key={index} className='other-row'>
+//                 <td>{appointmentArray.userName}</td>
+//                 <td>{appointmentArray.selectedDate}</td>
+//                 <td>{appointmentArray.selectedTime}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </>
+//   );
+// }
+
+// function getDoctorSpecialty(doctorName) {
+//   // Replace with your logic to fetch the specialty based on the doctor's name
+//   const doctors = [
+//     { D_Id: 1, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//     { D_Id: 2, name: 'Dr. Varun', specialty: 'Cardiologist' },
+//     { D_Id: 3, name: 'Dr. Ankush Ahuja', specialty: 'Cardiologist' },
+//     { D_Id: 4, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//     { D_Id: 5, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//     { D_Id: 6, name: 'Dr. John ', specialty: 'Dentistry' },
+//     { D_Id: 7, name: 'Dr. Anne ', specialty: 'ENT' },
+//     { D_Id: 8, name: 'Dr. Marko Sob', specialty: 'Nephrology' },
+//     { D_Id: 9, name: 'Dr. Gandhi', specialty: 'Neurology' },
+//   ];
+
+//   const doctor = doctors.find((doc) => doc.name === doctorName);
+//   return doctor ? doctor.specialty : '';
+// }
+
+// export default ViewRecords;
+
+
+
+// import React, { useState, useEffect } from 'react';
+// import "../styles/view.css";
+
+// function ViewRecords() {
+//   const [appointments, setAppointments] = useState([]);
+//   const [appointmentsArray, setAppointmentsArray] = useState([]);
+//   const isLoggedInString = localStorage.getItem("isLoggedIn");
+//   const isLoggedIn = JSON.parse(isLoggedInString);
+//   const isDoctor = isLoggedIn && isLoggedIn.userType === "doctor";
+
+//   useEffect(() => {
+//     const storedAppointments = JSON.parse(localStorage.getItem('appointments')) || [];
+//     setAppointments(storedAppointments);
+//   }, []);
+
+//   useEffect(() => {
+//     const storedAppointmentsArray = JSON.parse(localStorage.getItem('appointmentsArray')) || [];
+//     setAppointmentsArray(storedAppointmentsArray);
+//   }, []);
+
+//   const handleCancelAppointment = (index) => {
+//     // Implement your logic to cancel the appointment based on the index
+//     const updatedAppointments = [...appointments];
+//     updatedAppointments.splice(index, 1);
+//     // Save the updated appointments back to localStorage
+//     localStorage.setItem('appointments', JSON.stringify(updatedAppointments));
+//     setAppointments(updatedAppointments);
+//   };
+
+//   return (
+//     <>
+//       <div className='view'>
+//         <h1 className='view-heading'>Registered Appointments</h1>
+//         <table className='appointment-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Email</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//               <th>Age</th>
+//               <th>Phone Number</th>
+//               <th>Blood Group</th>
+//               <th>Gender</th>
+//               <th>Doctor</th>
+//               <th>Specialty</th>
+//               <th>D_Id</th>
+//               {isDoctor && <th>Action</th>}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointments.map((appointment, index) => (
+//               <tr key={index} className='appointment-row'>
+//                 <td>{appointment.name}</td>
+//                 <td>{appointment.email}</td>
+//                 <td>{appointment.date}</td>
+//                 <td>{appointment.time}</td>
+//                 <td>{appointment.age}</td>
+//                 <td>{appointment.phoneNumber}</td>
+//                 <td>{appointment.bloodGroup}</td>
+//                 <td>{appointment.gender}</td>
+//                 <td>{appointment.selectedDoctor}</td>
+//                 <td>{getDoctorSpecialty(appointment.selectedDoctor)}</td>
+//                 <td>{getDoctorId(appointment.selectedDoctor)}</td>
+//                 {isDoctor && (
+//                   <td>
+//                     <button onClick={() => handleCancelAppointment(index)}>Cancel</button>
+//                   </td>
+//                 )}
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//       <div className='view1'>
+//         <h1 className='view-heading'>Booked Appointments</h1>
+//         <table className='other-table'>
+//           <thead>
+//             <tr>
+//               <th>Name</th>
+//               <th>Date</th>
+//               <th>Time</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {appointmentsArray.map((appointmentArray, index) => (
+//               <tr key={index} className='other-row'>
+//                 <td>{appointmentArray.userName}</td>
+//                 <td>{appointmentArray.selectedDate}</td>
+//                 <td>{appointmentArray.selectedTime}</td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//       </div>
+//     </>
+//   );
+// }
+
+// function getDoctorSpecialty(doctorName) {
+//   const doctors = [
+//         { D_id: 10, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//         { D_id: 11, name: 'Dr. Varun', specialty: 'Cardiologist' },
+//         { D_id: 12, name: 'Dr. Ankush Ahuja', specialty: 'Cardiologist' },
+//         { D_id: 13, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//         { D_id: 14, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//         { D_id: 15, name: 'Dr. John ', specialty: 'Dentistry' },
+//         { D_id: 16, name: 'Dr. Anne', specialty: 'ENT' },
+//         { D_id: 17, name: 'Dr. Marko', specialty: 'Nephrology' },
+//         { D_id: 18, name: 'Dr. Gandhi', specialty: 'Neurology' },
+//   ];
+
+//   const doctor = doctors.find((doc) => doc.name === doctorName);
+//   return doctor ? doctor.specialty : '';
+// }
+
+// function getDoctorId(doctorName) {
+//   const doctors = [
+//         { D_id: 10, name: 'Dr. John Smith', specialty: 'Cardiologist' },
+//         { D_id: 11, name: 'Dr. Varun', specialty: 'Cardiologist' },
+//         { D_id: 12, name: 'Dr. Ankush Ahuja', specialty: 'Cardiologist' },
+//         { D_id: 13, name: 'Dr. Jane Doe', specialty: 'Dermatologist' },
+//         { D_id: 14, name: 'Dr. Jane Frank', specialty: 'Dentistry' },
+//         { D_id: 15, name: 'Dr. John ', specialty: 'Dentistry' },
+//         { D_id: 16, name: 'Dr. Anne', specialty: 'ENT' },
+//         { D_id: 17, name: 'Dr. Marko', specialty: 'Nephrology' },
+//         { D_id: 18, name: 'Dr. Gandhi', specialty: 'Neurology' },
+//   ];
+
+//   const doctor = doctors.find((doc) => doc.name === doctorName);
+//   return doctor ? doctor.D_id : '';
+// }
+
+// export default ViewRecords;

@@ -1,0 +1,63 @@
+.signup-container {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    max-width: 400px;
+    width: 100%;  
+    text-align: center;
+    margin: 0 auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+  }
+  
+  /* Title styling */
+  h1 {
+    color: #000000; /* Blue title color */
+    font-size: 28px; /* Larger font size */
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  }
+  
+  /* Form styling */
+ .signup form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Form group styling */
+ .signup .form-group {
+    text-align: left;
+  }
+  
+  /* Label styling */
+  .signuplabel {
+    font-weight: bold;
+    color: #151212; /* Slightly darker text color */
+  }
+  
+  /* Input and select field styling */
+ input, select {
+    width: 100%;
+    padding: 5px; /* Larger padding for inputs */
+    
+    font-size: 15px;
+    
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    padding: 12px 0; /* Larger padding for the button */
+    background-color: #0e1012;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    margin-top: 20px; /* More spacing below the button */
+  }
+  
+ 
+ #user-type{
+    width: 80%;
+ }

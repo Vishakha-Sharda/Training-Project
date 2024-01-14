@@ -1,0 +1,25 @@
+import React from 'react'
+
+export default function About() {
+  return (
+    <div>
+  <h1>About Us</h1>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non
+        vestibulum nulla, at volutpat quam. Nulla facilisi. Nulla id
+        tristique arcu. Proin commodo varius turpis eu rhoncus.
+      </p>
+      <p>
+        Vestibulum eget quam nec tellus aliquet pharetra. Suspendisse
+        potenti. Proin sed dapibus felis. Integer ac congue enim, vel
+        vehicula lectus.
+      </p>
+      <p>
+        Nullam sit amet risus vitae tellus rhoncus euismod sed sed justo.
+        Vestibulum tincidunt massa eget arcu dictum eleifend.
+      </p>
+  
+
+    </div>
+  )
+}

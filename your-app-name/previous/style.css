@@ -1,0 +1,64 @@
+.label {
+    display:flex;
+    text-align: center;
+    font-size: large;
+    color: rgb(142, 91, 91);
+  justify-content: center;
+    margin: 20px;
+    align-content:center;
+ 
+  }
+  
+  .input {
+    font-size: small;
+    display: flex;
+    justify-content:center; 
+    font-style: italic;
+    height: 20px;
+    padding: 5px;
+    margin: 5px;
+ 
+  }
+
+.btn{
+    border-style:double;
+    color: rgb(226, 217, 217);
+    font-size: large;
+    background-color: rgb(105, 13, 108);
+  }
+
+  .error-message{
+    display: auto;
+    
+ 
+    color: rgb(11, 4, 37);
+    font-size: large;
+  }
+  .success-message{
+    display:auto;
+    color:rgb(92, 14, 101);
+    padding: 5px;
+
+  }
+  .messages {
+    display: flex;
+    justify-content: center;
+    font-size: large;
+  }
+  .border-success {
+    --bs-border-opacity: 1;
+    border-color: rgba(var(--bs-success-rgb), var(--bs-border-opacity)) !important;
+  }
+  form{
+    text-align: center;
+    font-size: large;
+    font-style: italic;
+ 
+  
+ }
+
+ 
+
+ 
+
+

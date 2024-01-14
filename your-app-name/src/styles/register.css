@@ -1,0 +1,149 @@
+/* .app {
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  min-height: 100vh;
+  background-color: #e6e7ee;
+  background-image: url("../images/consulting.avif");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.register-form {
+  background-color: rgb(253, 252, 252);
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 90%;
+  max-width: 400px;
+  margin: 5%;
+  text-align: center; 
+}
+
+.register-form h2 {
+  font-size: 24px; 
+  margin-bottom: 20px; 
+}
+
+.register-form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="date"],
+.register-form input[type="time"],
+.register-form select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.register-form select {
+  font-size: 15px;
+}
+
+.register-form .btn {
+  background-color: #131513;
+  margin-top: 10px;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px; 
+}
+
+.success-message {
+  background-color: #080808; /
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 4px;
+} */
+.app {
+
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+    min-height: 100vh;
+    background-color: #e6e7ee;
+    background-image: url("../images/consulting.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+  
+.register-form {
+  background-color: rgb(253, 252, 252);
+  padding: 2rem;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 100%;
+  margin-top: 5%;
+  max-width: 500px;
+  text-align: center;
+  /* display: grid; */
+  gap: 5px;
+}
+
+.register-form h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.register-form label {
+  display: block;
+  font-weight: bold;
+  flex:left;
+}
+
+.register-form input[type="text"],
+.register-form input[type="email"],
+.register-form input[type="date"],
+.register-form input[type="time"],
+.register-form input[type="tel"],
+.register-form input[type="number"],
+.register-form select {
+  width: 100%;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+.register-form select {
+  font-size: 15px;
+}
+
+.register-form .btn {
+  background-color: #131513;
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 10px 20px;
+  width: 50%;
+}
+
+.success-message {
+  background-color: #080808;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+  border-radius: 4px;
+}

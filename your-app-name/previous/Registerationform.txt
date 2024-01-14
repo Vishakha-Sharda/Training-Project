@@ -1,0 +1,705 @@
+import React, { useState } from 'react'
+import  {Link} from 'react-router-dom'
+import "./style.css"
+import './Navbar'
+ function Registerationform() {
+
+    const[formData,setFormData]=useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        password: '',
+    });
+    const[formErrors,setFormErrors]=useState({
+        firstName:'',
+        lastName:'',
+        email:'',
+        password:'',
+    });
+     const initial = {
+        firstName: '',
+         email: '',
+        password: '',
+        lastName:'',
+      };
+    const[isRegistered, setIsRegistered]=useState(false);
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+          ...formData,
+          [name]: value,
+        });
+        validateInput(name, value);
+    };
+    
+    const validateInput=(name,value)=>{
+        let errorMessage=" ";
+
+        if (name === 'firstName' || name === 'lastName') {
+            if (!value) {
+              errorMessage = 'This field is required*.';
+            }
+          } else if (name === 'email') {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!value.match(emailRegex)) {
+              errorMessage = 'Please enter a valid email address*.';
+            }
+          } else if (name === 'password') {
+            if (value.length < 6) {
+              errorMessage = 'Password must be at least 6 characters long*.';
+            }
+          }
+    
+
+    setFormErrors({
+        ...formErrors,
+        [name]:errorMessage,
+    });
+}; 
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+    
+        
+        if (formData.firstName === '' || formData.email === '' || formData.password === '' || formData.lastName==='') {
+         
+          setFormErrors({
+            firstName: 'First Name is required*',
+            lastName: 'Last Name is required*',
+            email: 'Email is required*',
+            password: 'Password is required*',
+          });
+         setFormData(initial);
+        
+         
+        } else {
+          setIsRegistered(true);
+          setFormData(initial);
+        }
+    
+      };
+  return (
+    <div>
+  
+       
+    <form  >
+        <div>
+        <h1> Registration Form</h1>
+        
+		<label className="form-label"> FirstName  </label>
+	
+          <input
+            type="text"
+            name="firstName"
+            placeholder="First Name"
+            value={formData.firstName}
+            onChange={handleChange}
+            />
+            <p className="error-message">{formErrors.firstName}</p>
+        
+        </div>
+        
+        <div>
+		<label className="form-label">Last Name  </label>	
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Last Name"
+            value={formData.lastName}
+            onChange={handleChange}
+        />
+        <p className="error-message">{formErrors.lastName}</p>
+        </div>
+    
+        
+        <div>
+		<label className="form-label">Email add.  </label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+        />
+        <p className="error-message">{formErrors.email}</p>
+        </div>
+        
+        <div>
+		<label className="form-label">Password  </label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            />
+           <p className='error-mesage'>{formErrors.password}</p>          
+        </div>
+    
+        <button   className='btn' type="submit"  onClick={handleSubmit}>Register</button>
+        {isRegistered && (
+        <div className="success-message"><b>Registered successfully!</b></div>
+      )}
+      </form> 
+      <Link to="/Login"> Login</Link>
+        </div>
+  );
+
+ }
+ export default  Registerationform;
+
+// import React,{useState,useEffect} from 'react'
+// import '../styles/register.css'
+// import  {Link} from 'react-router-dom'
+
+
+// const initialFormData = {
+//   firstName: '',
+//   lastName: '',
+//   email: '',
+//   password: '',
+// };
+
+// const initialFormErrors = {
+//   firstName: '',
+//   lastName: '',
+//   email: '',
+//   password: '',
+// };
+// function Register() {
+//   const [formData, setFormData] = useState(initialFormData);
+//   const [formErrors, setFormErrors] = useState(initialFormErrors);
+//   const [formDatas, setFormDatas] = useState([]); // Store multiple form data objects here
+//   const [isRegistered, setIsRegistered] = useState(false);
+
+//   useEffect(() => {
+//     // Load form data from local storage on component mount/
+//     const storedFormData = JSON.parse(localStorage.getItem('formData'));
+//     if (storedFormData) {
+//       setFormDatas(storedFormData);
+//     }
+//   }, []);
+
+//   useEffect(() => {
+//     // Save form data to local storage whenever it changes
+//     localStorage.setItem('formData', JSON.stringify(formDatas));
+//     console.log(formDatas )
+//   }, [formDatas]);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//     validateInput(name, value);
+//   };
+
+//   const validateInput = (name, value) => {
+//     let errorMessage = '';
+
+//     if (name === 'firstName' || name === 'lastName') {
+//       if (!value) {
+//         errorMessage = 'This field is required*';
+//       }
+//     } else if (name === 'email') {
+//       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//       if (!value.match(emailRegex)) {
+//         errorMessage = 'Please enter a valid email address*';
+//       }
+//     } else if (name === 'password') {
+//       if (value.length < 6) {
+//         errorMessage = 'Password must be at least 6 characters long*';
+//       }
+//     }
+
+//     setFormErrors({
+//       ...formErrors,
+//       [name]: errorMessage,
+//     });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (formData.firstName === '' || formData.email === '' || formData.password === '' || formData.lastName === '') {
+//       setFormErrors({
+//         firstName: 'First Name is required*',
+//         lastName: 'Last Name is required*',
+//         email: 'Email is required*',
+//         password: 'Password is required*',
+//       });
+//     } else {
+//       // Add the current form data to the array
+//       setFormDatas([...formDatas, formData]);
+
+//       setIsRegistered(true);
+//       setFormData(initialFormData);
+//     }
+//   };
+
+
+
+//   return (
+//     <div>
+//    <form  >
+//         <div>
+//         <h1> Registration Form</h1>
+        
+// 		<label className="form-label"> <b>FirstName:</b>  </label>
+	
+//           <input
+//             type="text"
+//             name="firstName"
+//             placeholder= "First Name "
+//             value={formData.firstName}
+//             onChange={handleChange}
+//             />
+//             <p className="error-message">{formErrors.firstName}</p>
+        
+//         </div>
+        
+//         <div>
+// 		<label className="form-label"><b>Last Name:</b>  </label>	
+//           <input
+//             type="text"
+//             name="lastName"
+//             placeholder="Last Name"
+//             value={formData.lastName}
+//             onChange={handleChange}
+//         />
+//         <p className="error-message">{formErrors.lastName}</p>
+//         </div>
+    
+        
+//         <div>
+// 		<label className="form-label"><b>Email add.:</b>  </label>
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Email"
+//             value={formData.email}
+//             onChange={handleChange}
+//         />
+//         <p className="error-message">{formErrors.email}</p>
+//         </div>
+        
+//         <div>
+// 		<label className="form-label"><b>Password:</b>  </label>
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="Password"
+//             value={formData.password}
+//             onChange={handleChange}
+//             />
+//            <p className='error-mesage'>{formErrors.password}</p>          
+//         </div>
+    
+//         <button   className='btn'  onClick={handleSubmit}   type="submit"  >Register</button>
+//         <Link to ='/login'>Login</Link>
+//         {isRegistered && (
+//         <div className="success-message"><b>Registered successfully!</b></div>
+//       )} <br/>
+//       </form> 
+      
+//     </div>
+//   )
+// }
+
+// export default Register
+
+
+// import React, { useState } from 'react'
+// import  {Link} from 'react-router-dom'
+
+//  function Register() {
+
+//     const[formData,setFormData]=useState({
+//         firstName: '',
+//         lastName: '',
+//         email: '',
+//         password: '',
+//     });
+//     const[formErrors,setFormErrors]=useState({
+//         firstName:'',
+//         lastName:'',
+//         email:'',
+//         password:'',
+//     });
+//      const initial = {
+//         firstName: '',
+//          email: '',
+//         password: '',
+//         lastName:'',
+//       };
+//     const[isRegistered, setIsRegistered]=useState(false);
+//     const handleChange = (e) => {
+//         const { name, value } = e.target;
+//         setFormData({
+//           ...formData,
+//           [name]: value,
+//         });
+//         validateInput(name, value);
+//     };
+    
+//     const validateInput=(name,value)=>{
+//         let errorMessage=" ";
+
+//         if (name === 'firstName' || name === 'lastName') {
+//             if (!value) {
+//               errorMessage = 'This field is required*.';
+//             }
+//           } else if (name === 'email') {
+//             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//             if (!value.match(emailRegex)) {
+//               errorMessage = 'Please enter a valid email address*.';
+//             }
+//           } else if (name === 'password') {
+//             if (value.length < 6) {
+//               errorMessage = 'Password must be at least 6 characters long*.';
+//             }
+//           }
+    
+
+//     setFormErrors({
+//         ...formErrors,
+//         [name]:errorMessage,
+//     });
+// }; 
+
+
+//     const handleSubmit = (e) => {
+//         e.preventDefault();
+    
+        
+//         if (formData.firstName === '' || formData.email === '' || formData.password === '' || formData.lastName==='') {
+         
+//           setFormErrors({
+//             firstName: 'First Name is required*',
+//             lastName: 'Last Name is required*',
+//             email: 'Email is required*',
+//             password: 'Password is required*',
+//           });
+//          setFormData(initial);
+        
+         
+//         } else {
+//           setIsRegistered(true);
+//           setFormData(initial);
+//         }
+    
+//       };
+//   return (
+//     <div>
+  
+       
+//     <form  >
+//         <div>
+//         <h1> Registration Form</h1>
+        
+// 		<label className="form-label"> FirstName  </label>
+	
+//           <input
+//             type="text"
+//             name="firstName"
+//             placeholder="First Name"
+//             value={formData.firstName}
+//             onChange={handleChange}
+//             />
+//             <p className="error-message">{formErrors.firstName}</p>
+        
+//         </div>
+        
+//         <div>
+// 		<label className="form-label">Last Name  </label>	
+//           <input
+//             type="text"
+//             name="lastName"
+//             placeholder="Last Name"
+//             value={formData.lastName}
+//             onChange={handleChange}
+//         />
+//         <p className="error-message">{formErrors.lastName}</p>
+//         </div>
+    
+        
+//         <div>
+// 		<label className="form-label">Email add.  </label>
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Email"
+//             value={formData.email}
+//             onChange={handleChange}
+//         />
+//         <p className="error-message">{formErrors.email}</p>
+//         </div>
+        
+//         <div>
+// 		<label className="form-label">Password  </label>
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="Password"
+//             value={formData.password}
+//             onChange={handleChange}
+//             />
+//            <p className='error-mesage'>{formErrors.password}</p>          
+//         </div>
+    
+//         <button   className='btn' type="submit"  onClick={handleSubmit}>Register</button>
+//         {isRegistered && (
+//         <div className="success-message"><b>Registered successfully!</b></div>
+//       )}
+//       </form> 
+//       <Link to="/Login"> Login</Link>
+//         </div>
+//   );
+
+//  }
+//  export default  Register;
+
+
+
+
+
+
+
+
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+
+// function Register() {
+//   const [formData, setFormData] = useState({
+//     firstName: '',
+//     lastName: '',
+//     email: '',
+//     password: '',
+//   });
+//   const [formErrors, setFormErrors] = useState({
+//     firstName: '',
+//     lastName: '',
+//     email: '',
+//     password: '',
+//   });
+//   const initial = {
+//     firstName: '',
+//     email: '',
+//     password: '',
+//     lastName: '',
+//   };
+//   const [isRegistered, setIsRegistered] = useState(false);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData({
+//       ...formData,
+//       [name]: value,
+//     });
+//     validateInput(name, value);
+//   };
+
+//   const validateInput = (name, value) => {
+//     let errorMessage = ' ';
+
+//     if (name === 'firstName' || name === 'lastName') {
+//       if (!value) {
+//         errorMessage = 'This field is required*.';
+//       }
+//     } else if (name === 'email') {
+//       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+//       if (!value.match(emailRegex)) {
+//         errorMessage = 'Please enter a valid email address*.';
+//       }
+//     } else if (name === 'password') {
+//       if (value.length < 6) {
+//         errorMessage = 'Password must be at least 6 characters long*.';
+//       }
+//     }
+
+//     setFormErrors({
+//       ...formErrors,
+//       [name]: errorMessage,
+//     });
+//   };
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+
+//     if (
+//       formData.firstName === '' ||
+//       formData.email === '' ||
+//       formData.password === '' ||
+//       formData.lastName === ''
+//     ) {
+//       setFormErrors({
+//         firstName: 'First Name is required*',
+//         lastName: 'Last Name is required*',
+//         email: 'Email is required*',
+//         password: 'Password is required*',
+//       });
+//       setFormData(initial);
+//     } else {
+//       setIsRegistered(true);
+     
+//       const existingData = JSON.parse(localStorage.getItem('userData')) || [];
+//       // Store user data in local storage
+//       const userData = {
+//         firstName: formData.firstName,
+//         lastName: formData.lastName,
+//         email: formData.email,
+//         password: formData.password,
+//       };
+//       const updatedData = [...existingData, userData];
+
+//       localStorage.setItem('userData', JSON.stringify(updatedData));
+//       setFormData(initial);
+//     }
+//   };
+
+//   return (
+//     <div>
+//       <form>
+//         <div>
+//           <h1> Registration Form</h1>
+
+//           <label className="form-label"> FirstName </label>
+
+//           <input
+//             type="text"
+//             name="firstName"
+//             placeholder="First Name"
+//             value={formData.firstName}
+//             onChange={handleChange}
+//           />
+//           <p className="error-message">{formErrors.firstName}</p>
+//         </div>
+
+//         <div>
+//           <label className="form-label">Last Name </label>
+//           <input
+//             type="text"
+//             name="lastName"
+//             placeholder="Last Name"
+//             value={formData.lastName}
+//             onChange={handleChange}
+//           />
+//           <p className="error-message">{formErrors.lastName}</p>
+//         </div>
+
+//         <div>
+//           <label className="form-label">Email add. </label>
+//           <input
+//             type="email"
+//             name="email"
+//             placeholder="Email"
+//             value={formData.email}
+//             onChange={handleChange}
+//           />
+//           <p className="error-message">{formErrors.email}</p>
+//         </div>
+
+//         <div>
+//           <label className="form-label">Password </label>
+//           <input
+//             type="password"
+//             name="password"
+//             placeholder="Password"
+//             value={formData.password}
+//             onChange={handleChange}
+//           />
+//           <p className="error-message">{formErrors.password}</p>
+//         </div>
+
+//         <button className="btn" type="submit" onClick={handleSubmit}>
+//           Register
+//         </button>
+//         {isRegistered && (
+//           <div className="success-message">
+//             <b>Registered successfully!</b>
+//           </div>
+//         )}
+//         <Link to="/Login">Login</Link>
+//       </form>
+      
+//     </div>
+//   );
+// }
+// export default Register;
+
+
+// import React, { useState } from 'react';
+// import { Link } from 'react-router-dom';
+
+// function Register() {
+//   const [userType, setUserType] = useState('');
+//   const [showRegistration, setShowRegistration] = useState(false);
+
+//   const handleUserTypeSelect = (type) => {
+//     setUserType(type);
+//     setShowRegistration(true);
+//   };
+
+//   return (
+//     <div>
+//       {!showRegistration ? (
+//         <div>
+//           <h1>Register as</h1>
+//           <button onClick={() => handleUserTypeSelect('patient')}>Patient</button>
+//           <button onClick={() => handleUserTypeSelect('doctor')}>Doctor</button>
+//         </div>
+//       ) : (
+//         <form>
+//           <div>
+//             <h1> Registration Form</h1>
+// a
+//             <label className="form-label"> First Name </label>
+//             <input type="text" name="firstName" placeholder="First Name" />
+//           </div>
+
+//           <div>
+//             <label className="form-label"> Last Name </label>
+//             <input type="text" name="lastName" placeholder="Last Name" />
+//           </div>
+
+//           <div>
+//             <label className="form-label"> Email add. </label>
+//             <input type="email" name="email" placeholder="Email" />
+//           </div>
+
+//           <div>
+//             <label className="form-label"> Password </label>
+//             <input type="password" name="password" placeholder="Password" />
+//           </div>
+
+//           {userType === 'patient' ? (
+//             <div>
+//               <label className="form-label"> Patient-specific field </label>
+//               <input type="text" name="patientField" placeholder="Patient Field" />
+//             </div>
+//           ) : null}
+
+//           {userType === 'doctor' ? (
+//             <div>
+//               <label className="form-label"> Doctor-specific field </label>
+//               <input type="text" name="doctorField" placeholder="Doctor Field" />
+//             </div>
+//           ) : null}
+
+//           <button className="btn" type="submit">
+//             Register
+//           </button>
+//           <Link to="/Login">Login</Link>
+//         </form>
+//       )}
+//     </div>
+//   );
+// }
+
+// export default Register;
+
+
+
+

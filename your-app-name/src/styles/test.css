@@ -1,0 +1,74 @@
+.imagee {
+    width: 100%;
+   height: 25vh;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+   
+  }
+  .headerContainer{
+    color: black;
+    font-weight: bolder;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+
+  .body{
+    margin-top: 2%;
+  }
+  #test1{
+    color: rgb(8, 8, 8);
+    text-align:center;
+   
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+    margin-top: 5%;
+    
+  }
+ #test2{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: rgb(8, 8, 8);
+    text-align:center;
+    
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+ }
+
+ #test3{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: rgb(8, 8, 8);
+    text-align:center;
+    
+    font-weight: bold;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: large;
+ }
+ @media only screen and (max-width: 600px) {
+    .imagee {
+       
+        height:10vh;
+
+    }
+
+   
+    #test1, #test2, #test3 {
+
+        font-size: small;
+
+    }
+}
+
+.testimonial{
+  margin-top:2%;
+}

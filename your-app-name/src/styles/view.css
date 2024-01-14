@@ -1,0 +1,108 @@
+/* Default styles for larger screens */
+.view {
+    margin-top: 9%;
+    margin-bottom: 5%;
+    text-align: center;
+    padding: 20px;
+    /* background-image: url("../blue-image.jpg");
+    background-size: cover;
+    background-repeat: no-repeat; */
+}
+
+.view1 {
+    margin-top: 5%;
+    margin-bottom: 5%;
+    text-align: center;
+    padding: 20px;
+}
+
+.view-heading {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: bold;
+    margin-top: 5%;
+}
+
+/* Style the table */
+.appointment-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.appointment-table th, .appointment-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Style table headers */
+.appointment-table th {
+    background-color: #d4e9f7;
+    font-weight: bold;
+}
+
+/* Style table rows */
+.appointment-row {
+    background-color: #fff;
+}
+
+.appointment-row:nth-child(even) {
+    background-color: #d8e4f5;
+}
+
+/* Responsive styles for smaller screens */
+@media (max-width: 768px) {
+    .view {
+        padding: 10px;
+    }
+
+    .view-heading {
+        font-size: 20px;
+        margin-bottom: 10px;
+    }
+
+    .appointment-table th, .appointment-table td {
+        padding: 8px;
+    }
+}
+
+@media (max-width: 576px) {
+    .view {
+        padding: 5px;
+    }
+
+    .view-heading {
+        font-size: 18px;
+        margin-bottom: 5px;
+    }
+
+    .appointment-table th, .appointment-table td, .other-table th, .other-table td {
+        padding: 6px;
+    }
+}
+
+.other-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.other-table th, .other-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Style table headers */
+.other-table th {
+    background-color: #d9dbf8;
+    font-weight: bold;
+}
+
+/* Style table rows */
+.other-row {
+    background-color: #fff;
+}
+
+/* Style alternate table rows */
+.other-row:nth-child(even) {
+    background-color: #d2d6fb;
+}

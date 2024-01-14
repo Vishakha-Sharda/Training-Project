@@ -1,0 +1,124 @@
+
+.navbar {
+  background-color: #043358;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  z-index: 1000;
+}
+
+.navbar .leftSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 20px; /* Adjust the padding as needed */
+}
+
+.user-pic{
+  width: 20px;
+  border-radius: 40%;
+  cursor: pointer;
+  
+}
+.navbar .leftSide img {
+  width: 50px;
+}
+
+.navbar .rightSide {
+  flex: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end; /* Align links to the right */
+  align-items: center;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin: 0 20px; /* Adjust the margin for spacing */
+  font-weight: 100;
+  list-style-type: none;
+  font-size: 20px; /* Set font size as needed */
+}
+
+
+.navbar .rightSide button {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+  font-size: 20px; /* Set font size as needed */
+}
+
+/* Responsive styles */
+@media only screen and (max-width: 600px) {
+  .navbar a {
+    display: none;
+  }
+
+  .navbar .rightSide button {
+    display: inherit;
+  }
+
+  .navbar.open a {
+    display: block;
+    width: 70px;
+    margin: 0 10px; /* Adjust the margin for spacing */
+  }
+}
+
+.navbar a:hover {
+  background-color: rgb(101, 100, 138);
+}
+
+
+.btn {
+  color: rgb(8, 21, 21);
+}
+
+.user-dropdown {
+  position: relative;
+}
+
+
+
+.dropdown {
+  position: absolute;
+  top: 40px; /* Adjust this value to position the dropdown as needed */
+  right: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: none;
+  color: black;
+  width:10rem;
+}
+
+.user-dropdown:hover .dropdown {
+  display: block;
+}
+
+.dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dropdown li:hover {
+  background-color: #f0f0f0;
+  color: black;
+}

@@ -1,0 +1,66 @@
+
+.title2 {
+    background-color: #e8ebf2;
+    padding: 20px;
+    color: rgb(18, 16, 16);
+    margin-top: 4%;
+    background-image: url("../images//neurosurgery.jpg");
+    background-size:cover;
+    height:100vh;}
+
+   .title-content2{
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-style: italic;
+    justify-content: center;
+    text-align: right;
+    font-size: 5rem;
+    color: #c4cadf;
+    font-weight: 700;
+    line-height: 1.375;
+    letter-spacing: 1.1px;
+    text-shadow: 1px 1px 6px rgba(191, 207, 19, 0.3);
+    padding-top: 15px;
+
+  }
+  
+ 
+  
+  /* Style the paragraphs */
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+    color: #3144b1;
+  }
+  
+  /* Style strong tags for key points */
+  strong {
+    font-weight: bold;
+    color: #000;
+  }
+  
+  ul, ol {
+    margin: 10px 0;
+    padding-left: 20px;
+  }
+  
+  li {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #12359e;
+  }
+  
+  br {
+    margin-bottom: 20px;
+  }
+  
+  ul, ol {
+    margin: 10px 0;
+  }
+.neurosurgery-content{
+    margin: 2%;
+ 
+}
+.consult-page{
+    margin: 2%;
+}

@@ -1,0 +1,32 @@
+.image-centered{
+    padding-left:9% ;
+     padding-top: 2%; 
+    
+overflow: hidden;
+ 
+}
+.container{
+    float: left;
+    overflow: auto;
+}
+
+
+  /* Media query for small screens (e.g., mobile devices) */
+  @media (max-width: 767px) {
+    .image-centered {
+      max-height: 500px; /* Adjust the maximum height for smaller screens */
+      padding-left: 5%;
+      padding-top: 5%;
+    }
+  }
+  
+  /* Media query for medium-sized screens (e.g., tablets) */
+  @media (min-width: 768px) and (max-width: 991px) {
+    .image-centered {
+      max-height: 250px; /* Adjust the maximum height for medium-sized screens */
+      padding-left: 7%;
+      padding-top: 2%;
+    }
+  }
+
+

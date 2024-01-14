@@ -1,0 +1,82 @@
+import React from 'react'
+import './home.css'
+import papers from './papers.jpg'
+import blur from './blur.jpg'
+import pastel from './pastel.jpg'
+export default function Home() {
+  return (
+    <div className=' slides container '>
+      <div className='slides'>
+        <div className='slide slide-1'>
+          <img src={blur} alt='pink'/>
+        </div>
+        <div className='slide slide-2'>
+          <img src={pastel} alt='pink'/>
+        </div>
+        <div className='slide slide-3'>
+        <img src={papers} alt='pink'/>
+       </div>
+      </div>
+    </div>
+  )
+}
+
+
+
+
+css
+
+
+
+
+.slides{
+  height: 70vh;
+  overflow:hidden;
+  width:100%;
+  position:relative;
+
+  box-shadow: rgba(212, 198, 198, 0.35);
+
+}
+.slide{
+  position: absolute;
+  height: 100%;
+ 
+  opacity: 0;
+  inset:0;
+  animation: slide-show 12s infinite;
+  
+}
+.slide-2{
+  animation-delay: 4s;
+}
+
+.slide-3{
+  animation-delay: 8s;
+}
+
+.slide img{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  object-position:center;
+}
+
+@keyframes slide-show {
+ 0%{
+  opacity: 0;
+ } 
+ 10%{
+  opacity: 1;
+
+ }
+ 20%,
+ 30%{
+  opacity: 1;
+  scale: 1.03;
+
+ }
+ 50%{
+  opacity: 0;
+ }
+}
